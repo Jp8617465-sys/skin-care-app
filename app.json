@@ -1,37 +1,42 @@
 {
   "expo": {
-    "name": "Glow AI",
-    "slug": "glow-ai",
+    "name": "SkinCare Tracker",
+    "slug": "skin-care-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
-      "backgroundColor": "#FFF0F5",
-      "resizeMode": "contain"
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.glowai.app",
-      "infoPlist": {
-        "NSCameraUsageDescription": "Glow AI needs access to your camera to analyze your skin.",
-        "NSPhotoLibraryUsageDescription": "Glow AI needs access to your photos to analyze skin images."
-      }
+      "bundleIdentifier": "com.yourcompany.skincareapp"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#FFF0F5"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
       },
-      "package": "com.glowai.app",
-      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE"]
+      "package": "com.yourcompany.skincareapp",
+      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-camera",
-      "expo-image-picker"
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos to track skin progress.",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera to take progress photos."
+        }
+      ]
     ]
   }
 }
