@@ -5,6 +5,7 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { Text, Card, Chip, Button } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -93,10 +94,13 @@ const RecommendationsScreen: React.FC<Props> = ({ navigation }) => {
         notes: `Added from recommendations (${rec.matchScore}% match)`,
       });
 
+      Alert.alert('Success', 'Product added to your collection!');
+
       // Navigate to products list
       navigation.navigate('ProductList');
     } catch (error: any) {
       console.error('Error adding product:', error);
+      Alert.alert('Error', error.message || 'Failed to add product. Please try again.');
     } finally {
       setAddingProductId(null);
     }
