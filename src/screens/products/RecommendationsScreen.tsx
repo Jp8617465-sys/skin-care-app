@@ -89,8 +89,8 @@ const RecommendationsScreen: React.FC<Props> = ({ navigation }) => {
         name: rec.product.name,
         brand: rec.product.brand,
         category: rec.product.category,
-        usage: rec.product.usage,
-        ingredients: rec.product.ingredients,
+        usage: rec.product.usage || 'Both', // Default to 'Both' if undefined
+        ingredients: rec.product.ingredients || [],
         notes: `Added from recommendations (${rec.matchScore}% match)`,
       });
 

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
-import { FAB, Text, Card, Chip } from 'react-native-paper';
+import { FAB, Text, Card, Chip, Button } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuth } from '@hooks/useAuth';
 import { getUserProducts } from '@services/productService';
@@ -107,6 +107,16 @@ const ProductListScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* Recommendations Button */}
+      <Button
+        mode="outlined"
+        icon="star"
+        onPress={() => navigation.navigate('RecommendationsScreen')}
+        style={styles.recommendationsButton}
+      >
+        View Recommendations
+      </Button>
+
       <FlatList
         data={products}
         renderItem={renderProductItem}
@@ -194,6 +204,10 @@ const styles = StyleSheet.create({
   emptyText: {
     color: '#666',
     textAlign: 'center',
+  },
+  recommendationsButton: {
+    margin: 16,
+    marginBottom: 8,
   },
   fab: {
     position: 'absolute',
