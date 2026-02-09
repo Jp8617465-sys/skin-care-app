@@ -13,6 +13,7 @@ import ProgressTrackerScreen from '@screens/progress/ProgressTrackerScreen';
 import ProgressDetailScreen from '@screens/progress/ProgressDetailScreen';
 import AddProgressScreen from '@screens/progress/AddProgressScreen';
 import ProfileScreen from '@screens/profile/ProfileScreen';
+import ProfileEditScreen from '@screens/profile/ProfileEditScreen';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 const HomeStack = createNativeStackNavigator();
@@ -102,6 +103,11 @@ function ProfileStackNavigator() {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{ title: 'Profile' }}
+      />
+      <ProfileStack.Screen
+        name="ProfileEditScreen"
+        component={ProfileEditScreen}
+        options={{ title: 'Edit Profile' }}
       />
     </ProfileStack.Navigator>
   );

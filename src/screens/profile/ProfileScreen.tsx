@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Text, Button, Card } from 'react-native-paper';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuth } from '@hooks/useAuth';
 
-const ProfileScreen = () => {
+type Props = NativeStackScreenProps<any, 'ProfileScreen'>;
+
+const ProfileScreen: React.FC<Props> = ({ navigation }) => {
   const { user, signOut } = useAuth();
 
   const handleSignOut = async () => {
@@ -47,6 +50,15 @@ const ProfileScreen = () => {
       </Card>
 
       <Button
+        mode="contained"
+        onPress={() => navigation.navigate('ProfileEditScreen')}
+        style={styles.editButton}
+        icon="pencil"
+      >
+        Edit Profile
+      </Button>
+
+      <Button
         mode="outlined"
         onPress={handleSignOut}
         style={styles.signOutButton}
@@ -74,8 +86,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: '#666',
   },
-  signOutButton: {
+  editButton: {
     marginTop: 20,
+  },
+  signOutButton: {
+    marginTop: 12,
   },
 });
 
