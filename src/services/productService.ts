@@ -41,20 +41,22 @@ export const createProduct = async (
     imageUrl = await uploadImage(userId, 'products', productData.imageUri, filename);
   }
 
-  // Prepare product document
-  const product: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> = {
+  // Prepare product document (only include defined optional fields)
+  const product: any = {
     userId,
     name: productData.name,
     brand: productData.brand,
     category: productData.category,
     ingredients: productData.ingredients || [],
     usage: productData.usage,
-    purchaseDate: productData.purchaseDate,
-    expiryDate: productData.expiryDate,
-    notes: productData.notes,
-    imageUrl,
-    rating: productData.rating,
   };
+
+  // Only add optional fields if they're defined
+  if (productData.purchaseDate) product.purchaseDate = productData.purchaseDate;
+  if (productData.expiryDate) product.expiryDate = productData.expiryDate;
+  if (productData.notes) product.notes = productData.notes;
+  if (imageUrl) product.imageUrl = imageUrl;
+  if (productData.rating !== undefined) product.rating = productData.rating;
 
   // Create document in Firestore
   const productId = await createDocument(`users/${userId}/products`, product);
