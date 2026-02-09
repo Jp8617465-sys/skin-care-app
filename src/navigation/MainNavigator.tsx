@@ -6,6 +6,7 @@ import HomeScreen from '@screens/home/HomeScreen';
 import ProductListScreen from '@screens/products/ProductListScreen';
 import ProductDetailScreen from '@screens/products/ProductDetailScreen';
 import AddProductScreen from '@screens/products/AddProductScreen';
+import RecommendationsScreen from '@screens/products/RecommendationsScreen';
 import RoutineListScreen from '@screens/routines/RoutineListScreen';
 import RoutineBuilderScreen from '@screens/routines/RoutineBuilderScreen';
 import RoutineDetailScreen from '@screens/routines/RoutineDetailScreen';
@@ -47,6 +48,11 @@ function ProductsStackNavigator() {
         name="AddProduct"
         component={AddProductScreen}
         options={{ title: 'Add Product' }}
+      />
+      <ProductsStack.Screen
+        name="RecommendationsScreen"
+        component={RecommendationsScreen}
+        options={{ title: 'Recommendations' }}
       />
     </ProductsStack.Navigator>
   );
