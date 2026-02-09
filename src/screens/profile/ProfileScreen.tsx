@@ -39,18 +39,10 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
 
   // Get top 3 recommendations based on profile
   const recommendations = useMemo(() => {
-    console.log('ProfileScreen - Calculating recommendations');
-    console.log('Profile:', profile);
-    console.log('Concerns:', profile?.concerns);
-
     if (!profile || !profile.concerns || profile.concerns.length === 0) {
-      console.log('No profile or concerns, returning empty recommendations');
       return [];
     }
-
-    const recs = getRecommendations(profile.concerns, profile, undefined, 3);
-    console.log('Generated recommendations:', recs.length, recs);
-    return recs;
+    return getRecommendations(profile.concerns, profile, undefined, 3);
   }, [profile]);
 
   const handleSignOut = async () => {
