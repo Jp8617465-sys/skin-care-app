@@ -34,17 +34,17 @@ export const getUserProfile = async (userId: string): Promise<UserProfile | null
 };
 
 /**
- * Update user profile
+ * Update user profile (creates if doesn't exist)
  */
 export const updateUserProfile = async (
   userId: string,
   updates: Partial<UserProfile>
 ): Promise<void> => {
   const userRef = doc(db, 'users', userId);
-  await updateDoc(userRef, {
+  await setDoc(userRef, {
     ...updates,
     updatedAt: Timestamp.now(),
-  });
+  }, { merge: true });
 };
 
 /**
