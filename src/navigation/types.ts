@@ -15,8 +15,9 @@ export type HomeStackParamList = {
 
 export type ProductsStackParamList = {
   ProductList: undefined;
-  ProductDetail: { product: Product };
-  AddProduct: { product?: Product };
+  ProductDetail: { productId: string };
+  AddProduct: { productId?: string };
+  RecommendationsScreen: undefined;
 };
 
 export type RoutinesStackParamList = {
@@ -33,6 +34,7 @@ export type ProgressStackParamList = {
 
 export type ProfileStackParamList = {
   ProfileScreen: undefined;
+  ProfileEditScreen: undefined;
   SettingsScreen: undefined;
 };
 
